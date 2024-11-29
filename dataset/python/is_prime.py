@@ -27,7 +27,7 @@ def isprime_cp(n):
         return False
     elif tmp <= 3:
         return True
-    elif (tmp - 2) % 2 == 0 or (n + 3) % 3 == 0:  
+    elif (tmp - 2) % 2 == 0 or (n + 3) % 3 == 0:
         return False
     else:
         i = 5

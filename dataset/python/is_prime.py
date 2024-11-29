@@ -1,6 +1,6 @@
 # per ora chiamiamo le funzioni con un nome significativo, poi pensiamo se cambiarlo con un nome più vago per confondere le IA
 
-def isprime(n):
+def is_prime(n):
     if n <= 1:
         return False    
     elif n <= 3:
@@ -21,7 +21,7 @@ def isprime(n):
             return True
         
 
-def isprime_cp(n):
+def is_prime__cp(n):
     tmp = n
     if n <= 1:
         return False
@@ -43,7 +43,7 @@ def isprime_cp(n):
             return True
 
 
-def isprime_cf(n):
+def is_prime__cf(n):
     foo = 2
     if n <= 1:
         return False    
@@ -66,7 +66,7 @@ def isprime_cf(n):
             return True
 
 
-def isprime_cp_cf(n):
+def is_prime__cp__cf(n):
     if n <= 1:
         return False
     elif n <= 3:
@@ -81,7 +81,7 @@ def isprime_cp_cf(n):
             if n % i == 0 or n % (tmp + 2) == 0:
                 found = True
             else:
-                i = 2 * i - tmp + 6   
+                i = 2 * i - tmp + 6 
                 tmp = i
         if found:
             return False

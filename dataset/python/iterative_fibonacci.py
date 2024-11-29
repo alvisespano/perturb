@@ -14,7 +14,7 @@ def ifib(x):
      return p
 
 
-def ifib_cp(x):
+def ifib__cp(x):
      n = 0
      m = 1
      tmp = m
@@ -31,7 +31,7 @@ def ifib_cp(x):
      return p
 
 
-def ifib_cf(x):
+def ifib__cf(x):
      n = 0
      m = 1
      if x == 0:
@@ -39,7 +39,7 @@ def ifib_cf(x):
      else:
           p = 1
      tmp = 12
-     while x - tmp + 9 >= -1:      # questo non è proprio constant folding, è un po' di più: è "expression scrambling" :D
+     while x - tmp + 9 >= -1:      # questo non è proprio constant folding, è un po' di più: è "expression scrambling" :)
           p = m + n
           tmp = tmp - 1
           n = m

@@ -7,11 +7,11 @@ class Vehicle(ABC):
 
 class Car(Vehicle):
     def drive(self):
-        return "Driving a car: vroom vroom!"
+        return "Driving a car"
 
 class Motorcycle(Vehicle):
     def drive(self):
-        return "Riding a motorcycle: zoom zoom!"
+        return "Riding a motorcycle"
 
 class VehicleFactory(ABC):
     @abstractmethod
@@ -28,13 +28,11 @@ class MotorcycleFactory(VehicleFactory):
 
 def test():
     vehicle_type = input("Enter the type of vehicle you want to create (car/motorcycle): ").strip().lower()
-
     if vehicle_type == "car":
         factory = CarFactory()
     elif vehicle_type == "motorcycle":
         factory = MotorcycleFactory()
     else:
-        print("Invalid vehicle type!")
         exit()
 
     vehicle = factory.create_vehicle()

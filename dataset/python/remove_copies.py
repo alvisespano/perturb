@@ -37,6 +37,19 @@ def remove_copies__cp(L):
         i = i + 1
     return(L) 
 
+def remove_copies__cf(L):
+    i = 0
+    k = 1
+    while (i < len(L)):
+        j = i + k
+        while (j < len(L)):
+            if (L[i] == L[j]):
+                del L[j]
+            else:
+                j = j + k
+        i = i + k
+    return(L) 
+
 def remove_copies__cp__cf(L):
     i = 0
     k = 1

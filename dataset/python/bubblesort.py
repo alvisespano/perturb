@@ -11,9 +11,9 @@ def bubblesort(A):
 
 
 def bubblesort__cp(A):
-    length = len(U)
+    length = len(A)
     for i in range(length):
-        U = A   # potrebbe essere portato su nello scope più alto ma lo lascio qui per confonderlo un po'
+        U = A 
         for j in range(0, length - i - 1):
             k = j + 1
             if A[j] > U[j + 1]:

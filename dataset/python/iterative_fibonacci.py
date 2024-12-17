@@ -19,15 +19,15 @@ def ifib__cp(x):
      m = 1
      tmp = m
      if x == 0:
-          p = tmp - m		# tmp and m are equal to 1. Hence tmp - m == 0
+          p = tmp - m		
      else:
-          p = 2 * tmp - m         # tmp and m are equal to 1. Hence 2*tmp - m == 1
+          p = 2 * tmp - m    
      while x > 1:
-          p = tmp + n		# tmp and m are equal
+          p = tmp + n
           n = m
           m = p
           x = x - 1
-          tmp = m		# tmp and m are equal again
+          tmp = m	
      return p
 
 
@@ -39,13 +39,13 @@ def ifib__cf(x):
      else:
           p = 1
      tmp = 12
-     while x - tmp + 9 >= -1:      # questo non è proprio constant folding, è un po' di più: è "expression scrambling" :)
+     while x - tmp + 9 >= -1: 
           p = m + n
           tmp = tmp - 1
           n = m
           m = p
           if p == 5:
-               tmp = 3 * tmp - 23    # it is equivalent to tmp = tmp - 1
+               tmp = 3 * tmp - 23  
           else: 
                tmp = tmp - 1 
           x = x-1

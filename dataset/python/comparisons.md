@@ -11,7 +11,7 @@ _risposta attesa_: *no*
 #### AMAZON Q
 Dice che sono uguali e si sbaglia.
 
-#### CHATGPT 4o mini (free)
+#### CHATGPT 4o (free)
 Dice che sono equivalenti, ma in realtà si contraddice perché poco sotto dice che ci sono differenze dovute al comportamento diverso tra `del` e `remove()`.
 
 #### GEMINI (free)
@@ -142,9 +142,116 @@ _risposta attesa_: *sì*
 #### AMAZON Q
 Dice di sì ed ha ragione.
 
-#### CHATGPT 4o mini (free)
+#### CHATGPT 4o (free)
 Dice di dì ed ha ragione. Incredibile.
 
 #### GEMINI
 Dice che `__cf` è uguale ma `__cp` no perché fa una copia dell'input. Si sbaglia: il binding U = A non è una copia.
 
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET
+
+
+
+
+## crivello.py
+
+### DOMANDA 1
+Le 3 funzioni `crivello_eratostene()`, `crivello_eratostene__cp()`, `crivello_eratostene__cf()` e `crivello_eratostene__cp__cf/()` sono semanticamente equivalenti? 
+_risposta attesa_: *sì*
+
+#### AMAZON Q
+Dice di no ed ha torto. Ad esempio, sostiene che la guardia del while nella versione `__cf` sia differente da quella originale.
+
+#### CHATGPT 4o (free)
+Dice di sì ed ha ragione.
+
+#### GEMINI
+Dice di sì ed ha ragione. Addirittura è in grado di capire che la guardia del while della versione `__cf` è equivalente a quella originale. 
+E dice pure che la versione `__cp__cf` è la combinazione delle due precedenti.
+
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET
+
+
+
+
+
+## iterative_fibonacci.py
+
+### DOMANDA 1
+Le 3 funzioni `ifib()`, `ifib__cp()` e `ifib__cf()` sono semanticamente equivalenti? 
+_risposta attesa_: *sì*
+
+#### AMAZON Q
+Dice di no ed ha torto. Più precisamente, dice che la `__cf` sia diversa, mentre capisce che le altre due sono uguali.
+
+#### CHATGPT 4o (free)
+Dice di sì ed ha ragione.
+
+#### GEMINI
+Qui sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
+
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET
+
+
+
+
+
+## find_duplicate.py
+
+### DOMANDA 1
+Le 3 funzioni `find_duplicate()`, `find_duplicate__cp()` e `find_duplicate__cf()` sono semanticamente equivalenti? 
+_risposta attesa_: *sì*
+
+#### AMAZON Q
+
+
+#### CHATGPT 4o (free)
+Sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
+
+#### GEMINI
+Sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no. Stavolta come ChatGPT 4o. Mah.
+
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET
+
+
+
+## find_max_count.py
+
+### DOMANDA 1
+Le 3 funzioni `find_max_count()`, `find_max_count__cp()` e `find_max_count__cf()` sono semanticamente equivalenti? 
+_risposta attesa_: *sì*
+
+#### AMAZON Q
+Dice che sono equivalenti.
+
+#### CHATGPT 4o (free)
+Dice che sono equivalenti.
+
+#### GEMINI
+Dice che sono uguali. Sostiene ci siano solo piccole variazioni che inficiano solo la performance e non la semantica.
+
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET
+
+
+## is_prime.py
+
+### DOMANDA 1
+Le 3 funzioni `is_prime()`, `is_prime__cp()`, `is_prime__cf()` e `is_prime__cp_cf()` sono semanticamente equivalenti? 
+_risposta attesa_: *sì*
+
+#### AMAZON Q
+Dice che la versione `__cf` è equivalente all'originale, mentre la `__cp` e la `__cp_cf` sono diverse. Sembra sia confuso dalla CP.
+
+#### CHATGPT 4o (free)
+Anche lui dice che la versione `__cf` è equivalente all'originale, mentre la `__cp` e la `__cp_cf` sono diverse.
+
+#### GEMINI
+Dice che sono tutte equivalenti.
+
+#### COPILOT - GPT 4o
+#### COPILOT - CLAUDE 3.5 SONNET

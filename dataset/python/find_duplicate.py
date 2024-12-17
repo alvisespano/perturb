@@ -1,5 +1,4 @@
 
-# ritorna la posizione del primo elemento che occorre almeno 2 volte
 def find_duplicate(A):  
     i = 0
     length = len(A) 

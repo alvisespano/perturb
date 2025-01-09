@@ -149,7 +149,10 @@ Dice di dì ed ha ragione. Incredibile.
 Dice che `__cf` è uguale ma `__cp` no perché fa una copia dell'input. Si sbaglia: il binding U = A non è una copia.
 
 #### COPILOT - GPT 4o
+Dice che sono tutte semanticamnte equivalenti.
+
 #### COPILOT - CLAUDE 3.5 SONNET
+Dice che sono tutte equivalenti.
 
 
 
@@ -171,8 +174,9 @@ Dice di sì ed ha ragione. Addirittura è in grado di capire che la guardia del 
 E dice pure che la versione `__cp__cf` è la combinazione delle due precedenti.
 
 #### COPILOT - GPT 4o
+Dice che la versione cp  dovrebbe essere equivalente, mentre le ultime due potrebbero avere un comportamento differente per valori di n piccoli,
 #### COPILOT - CLAUDE 3.5 SONNET
-
+Dice che le prime due sono emanticamente equivalenti, mentre le ultime due NON lo sono perchè le condizioni nel loop portano a terminare la computazione prima.
 
 
 
@@ -193,7 +197,10 @@ Dice di sì ed ha ragione.
 Qui sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
 
 #### COPILOT - GPT 4o
+Dice che le prime due sono equivalenti mentre `__cf` non lo è per colpa del numero diverso di iterazioni.
+
 #### COPILOT - CLAUDE 3.5 SONNET
+Come 4o, dice che le prime due sono equivalenti mentre `__cf` non lo è per colpa del numero diverso di iterazioni.
 
 
 
@@ -206,7 +213,7 @@ Le 3 funzioni `find_duplicate()`, `find_duplicate__cp()` e `find_duplicate__cf()
 _risposta attesa_: *sì*
 
 #### AMAZON Q
-
+Dice che sono tutte semanticamente equivalenti.
 
 #### CHATGPT 4o (free)
 Sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
@@ -215,7 +222,10 @@ Sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
 Sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no. Stavolta come ChatGPT 4o. Mah.
 
 #### COPILOT - GPT 4o
+Uguale, sbaglia e dice che solo `__cp` è equivalente all'originale, mentre `__cf` no.
+
 #### COPILOT - CLAUDE 3.5 SONNET
+Dice che SONO TUTTE semanticamente equivalenti.
 
 
 
@@ -235,8 +245,10 @@ Dice che sono equivalenti.
 Dice che sono uguali. Sostiene ci siano solo piccole variazioni che inficiano solo la performance e non la semantica.
 
 #### COPILOT - GPT 4o
-#### COPILOT - CLAUDE 3.5 SONNET
+Dice che sono equivalenti.
 
+#### COPILOT - CLAUDE 3.5 SONNET
+Dice che SONO TUTTE semanticamente equivalenti.
 
 ## is_prime.py
 
@@ -254,4 +266,8 @@ Anche lui dice che la versione `__cf` è equivalente all'originale, mentre la `_
 Dice che sono tutte equivalenti.
 
 #### COPILOT - GPT 4o
+Dice che sono tutte semanticamente equivalenti tranne l'ultima.
+
 #### COPILOT - CLAUDE 3.5 SONNET
+
+Dice che SONO TUTTE semanticamente equivalenti.

@@ -32,6 +32,23 @@ def ifib__cp(x):
 
 
 def ifib__cf(x):
+     foo = 0
+     bar = 1
+     n = foo
+     m = bar
+     if x == 0:
+          p = foo
+     else:
+          p = foo + bar
+     while x > bar:
+          p = m + n
+          n = m
+          m = p
+          x = x - bar
+     return p
+
+
+def ifib__cp__cf(x):
      n = 0
      m = 1
      if x == 0:
@@ -51,4 +68,6 @@ def ifib__cf(x):
           x = x-1
           tmp = tmp + 2 
      return p
+
+
 

@@ -1,4 +1,3 @@
-# per ora chiamiamo le funzioni con un nome significativo, poi pensiamo se cambiarlo con un nome più vago per confondere le IA
 
 def is_prime(n):
     if n <= 1:

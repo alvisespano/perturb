@@ -47,7 +47,7 @@ def find_duplicate__cf(A):
         tmp = j - i
         while j < length and not trovato:
             if A[i] == A[j]:
-                trovato = not trovato
+                trovato = True
             else:
                 j = j + tmp
         if not trovato:
@@ -56,3 +56,25 @@ def find_duplicate__cf(A):
         return i
     else:
         return -1
+    
+    
+def find_duplicate__cp__cf(A):  
+    i = 0
+    length = len(A) 
+    trovato = False
+    while i < length and not trovato:
+        U = A
+        j = i + 1
+        tmp = j - i
+        while j < length and not trovato:
+            if A[i] == U[j]:
+                trovato = True
+            else:
+                j = j + tmp
+        if not trovato:
+            i = i + tmp * 2 - tmp
+    if trovato:
+        return i
+    else:
+        return -1
+    

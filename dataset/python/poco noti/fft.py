@@ -16,8 +16,8 @@ def f__cp(x):
         return x  
     ai = x[0::2]
     bi = x[1::2]
-    a = f(ai)
-    b = f(bi)
+    a = f__cp(ai)
+    b = f__cp(bi)
     fs = [cmath.exp(-2j * cmath.pi * k / N) for k in range(N // 2)]
     T = [fs[k] * b[k] for k in range(N // 2)]
     h1 = [a[k] + T[k] for k in range(N // 2)]
@@ -30,8 +30,8 @@ def f__cf(x):
     Ns = range(N // 2)
     if N <= 1:
         return x
-    a = f(x[0::2])
-    b = f(x[1::2])
+    a = f__cf(x[0::2])
+    b = f__cf(x[1::2])
     T = [cmath.exp(-2j * p * k / N) * b[k] for k in Ns]
     return [a[k] + T[k] for k in Ns] + [a[k] - T[k] for k in Ns]
 
@@ -43,8 +43,8 @@ def f__cp__cf(x):
     p = cmath.pi
     ai = x[0::2]
     bi = x[1::2]
-    a = f(ai)
-    b = f(bi)
+    a = f__cp__cf(ai)
+    b = f__cp__cf(bi)
     Ns = range(N // 2)
     fs = [cmath.exp(-2j * p * k / N) for k in Ns]
     T = [fs[k] * b[k] for k in Ns]

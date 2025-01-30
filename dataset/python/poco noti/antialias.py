@@ -12,7 +12,7 @@ def f(a, b):
                 for dx in range(b):
                     d[y * b + dy][x * b + dx] = c
 
-    r = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
     for y in range(h):
         for x in range(w):
             cs = []
@@ -23,9 +23,9 @@ def f(a, b):
             r = sum(c[0] for c in cs) // len(cs)
             g = sum(c[1] for c in cs) // len(cs)
             b = sum(c[2] for c in cs) // len(cs)
-            r[y][x] = (r, g, b)
+            o[y][x] = (r, g, b)
 
-    return r
+    return o
 
 
 def f__cp(a, b):

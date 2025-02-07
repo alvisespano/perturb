@@ -78,12 +78,7 @@ def unify(t1: Type, t2: Type, subst: Dict[str, Type]) -> Dict[str, Type]:
         return subst
     raise TypeError(f"Type mismatch: {t1} != {t2}")
 
-def occurs_check(t1: TypeVar, t2: Type, subst: Dict[str, Type]) -> bool:
-    if isinstance(t2, TypeVar):
-        if t2.name in subst:
-            return occurs_check(t1, subst[t2.name], subst)
-        return t1.name == t2.name
-    return False
+
 
 def infer(env: TypeEnv, e: Expr, subst: Dict[str, Type]) -> tuple[Type, Dict[str, Type]]:
     if isinstance(e, Var):

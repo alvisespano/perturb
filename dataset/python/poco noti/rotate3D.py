@@ -1,63 +1,63 @@
 import math
 
-def rotate_point(x, y, z, alpha, beta, gamma):
+def f(x, y, z, a, b, c):
     x1 = x
-    y1 = y * math.cos(alpha) - z * math.sin(alpha)
-    z1 = y * math.sin(alpha) + z * math.cos(alpha)
-    x2 = x1 * math.cos(beta) + z1 * math.sin(beta)
+    y1 = y * math.cos(a) - z * math.sin(a)
+    z1 = y * math.sin(a) + z * math.cos(a)
+    x2 = x1 * math.cos(b) + z1 * math.sin(b)
     y2 = y1
-    z2 = -x1 * math.sin(beta) + z1 * math.cos(beta)
-    x3 = x2 * math.cos(gamma) - y2 * math.sin(gamma)
-    y3 = x2 * math.sin(gamma) + y2 * math.cos(gamma)
+    z2 = -x1 * math.sin(b) + z1 * math.cos(b)
+    x3 = x2 * math.cos(c) - y2 * math.sin(c)
+    y3 = x2 * math.sin(c) + y2 * math.cos(c)
     z3 = z2
     return x3, y3, z3
 
-def rotate_point__cp(x, y, z, alpha, beta, gamma):
-    cos_alpha = math.cos(alpha)
-    sin_alpha = math.sin(alpha)
-    y1 = y * cos_alpha - z * sin_alpha
-    z1 = y * sin_alpha + z * cos_alpha
+def f__cp(x, y, z, a, b, c):
+    ca = math.cos(a)
+    sa = math.sin(a)
+    y1 = y * ca - z * sa
+    z1 = y * sa + z * ca
     x1 = x
-    cos_beta = math.cos(beta)
-    sin_beta = math.sin(beta)
-    x2 = x1 * cos_beta + z1 * sin_beta
-    z2 = -x1 * sin_beta + z1 * cos_beta
+    cb = math.cos(b)
+    sb = math.sin(b)
+    x2 = x1 * cb + z1 * sb
+    z2 = -x1 * sb + z1 * cb
     y2 = y1
-    cos_gamma = math.cos(gamma)
-    sin_gamma = math.sin(gamma)
-    x3 = x2 * cos_gamma - y2 * sin_gamma
-    y3 = x2 * sin_gamma + y2 * cos_gamma
+    cc = math.cos(c)
+    sc = math.sin(c)
+    x3 = x2 * cc - y2 * sc
+    y3 = x2 * sc + y2 * cc
     z3 = z2
     return x3, y3, z3
 
-def rotate_point__cf(x, y, z, alpha, beta, gamma):
+def f__cf(x, y, z, a, b, c):
     foo = 1
     x1 = x
-    y1 = y * math.cos(alpha) - z * math.sin(alpha)
-    z1 = y * math.sin(alpha) + z * math.cos(alpha + (foo - foo))
-    x2 = x1 * math.cos(beta) + z1 * foo * math.sin(beta)
+    y1 = y * math.cos(a) - z * math.sin(a)
+    z1 = y * math.sin(a) + z * math.cos(a + (foo - foo))
+    x2 = x1 * math.cos(b) + z1 * foo * math.sin(b)
     y2 = y1
-    z2 = -foo * x1 * math.sin(beta) + z1 * math.cos(beta)
-    x3 = x2 * math.cos(gamma) - y2 * math.sin(gamma)
-    y3 = x2 * math.sin(gamma) + y2 * math.cos(gamma)
+    z2 = -foo * x1 * math.sin(b) + z1 * math.cos(b)
+    x3 = x2 * math.cos(c) - y2 * math.sin(c)
+    y3 = x2 * math.sin(c) + y2 * math.cos(c)
     z3 = z2 / foo
     return x3, y3, z3
 
-def rotate_point__cp__cf(x, y, z, alpha, beta, gamma):
-    cos_alpha = math.cos(alpha)
-    sin_alpha = math.sin(alpha)
+def f__cp__cf(x, y, z, a, b, c):
+    ca = math.cos(a)
+    sa = math.sin(a)
     bar = 1
-    y1 = y * cos_alpha - z * sin_alpha * bar
-    z1 = y * sin_alpha + z * cos_alpha
+    y1 = y * ca - z * sa * bar
+    z1 = y * sa + z * ca
     x1 = x
-    cos_beta = math.cos(beta - bar + bar)
-    sin_beta = math.sin(beta)   
-    x2 = x1 * cos_beta + z1 * sin_beta * bar / bar
-    z2 = -bar * x1 * sin_beta + z1 * cos_beta
+    cbg = math.cos(b - bar + bar)
+    sb = math.sin(b)   
+    x2 = x1 * cbg + z1 * sb * bar / bar
+    z2 = -bar * x1 * sb + z1 * cbg
     y2 = y1
-    cos_gamma = math.cos(gamma)
-    sin_gamma = math.sin(gamma)
-    x3 = x2 * cos_gamma + -bar * y2 * sin_gamma
-    y3 = x2 * sin_gamma + y2 * cos_gamma
+    cc = math.cos(c)
+    sc = math.sin(c)
+    x3 = x2 * cc + -bar * y2 * sc
+    y3 = x2 * sc + y2 * cc
     z3 = z2
     return x3, y3, z3

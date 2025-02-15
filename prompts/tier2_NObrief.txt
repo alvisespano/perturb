@@ -3,7 +3,6 @@ I will provide you with multiple implementations of the same python function.
 The first function is the reference version.
 The other functions are perturbed with copy propagation, constant folding or a combination of the two.
 Are the functions semantically equivalent to the reference one?
-Please omit verbose explanations.
 
 
 def bubblesort(A):   

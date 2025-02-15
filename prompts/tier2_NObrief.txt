@@ -1,3 +1,9 @@
+I'm interested in comparing the semantics of small python programs.
+I will provide you with multiple implementations of the same python function. 
+The first function is the reference version.
+The other functions are perturbed with copy propagation, constant folding or a combination of the two.
+Are the functions semantically equivalent to the reference one?
+
 
 def bubblesort(A):   
     length = len(A)
@@ -9,10 +15,32 @@ def bubblesort(A):
                 A[j + 1] = temp
     return A
 
+def bubblesort__b(A):   
+    length = len(A)
+    for i in range(length):
+        for j in range(0, length - i - 1):
+            if A[j] > A[j]:
+                temp = A[j]
+                A[j] = A[j + 1] 
+                A[j + 1] = temp
+    return A
+
 def bubblesort__cp(A):
     length = len(A)
     for i in range(length):
         U = A 
+        for j in range(0, length - i - 1):
+            k = j + 1
+            if A[j] > U[j + 1]:
+                temp = A[j]
+                U[j] = A[j + 1] 
+                A[k] = temp
+    return U
+
+def bubblesort__cp__b(A):
+    length = len(A)
+    for i in range(length):
+        U = A.copy()
         for j in range(0, length - i - 1):
             k = j + 1
             if A[j] > U[j + 1]:
@@ -33,6 +61,18 @@ def bubblesort__cf(A):
                 A[j - bar] = temp
     return A
 
+def bubblesort__cf__b(A):   
+    length = len(A)
+    for i in range(length):
+        for j in range(0, length - i - 1):
+            foo = -1
+            bar = -foo
+            if A[j] > A[j + 1]:
+                temp = A[j]
+                A[j] = A[j + foo] 
+                A[j - bar] = temp
+    return A
+
 def bubblesort__cp__cf(A):   
     length = len(A)
     for i in range(length):
@@ -46,40 +86,6 @@ def bubblesort__cp__cf(A):
                 U[j] = A[j + 1] 
                 A[k] = temp
     return U
-
-def bubblesort__b(A):   
-    length = len(A)
-    for i in range(length):
-        for j in range(0, length - i - 1):
-            if A[j] > A[j]:
-                temp = A[j]
-                A[j] = A[j + 1] 
-                A[j + 1] = temp
-    return A
-
-def bubblesort__cp__b(A):
-    length = len(A)
-    for i in range(length):
-        U = A.copy()
-        for j in range(0, length - i - 1):
-            k = j + 1
-            if A[j] > U[j + 1]:
-                temp = A[j]
-                U[j] = A[j + 1] 
-                A[k] = temp
-    return U
-
-def bubblesort__cf__b(A):   
-    length = len(A)
-    for i in range(length):
-        for j in range(0, length - i - 1):
-            foo = -1
-            bar = -foo
-            if A[j] > A[j + 1]:
-                temp = A[j]
-                A[j] = A[j + foo] 
-                A[j - bar] = temp
-    return A
 
 def bubblesort__cp__cf__b(A):   
     length = len(A)

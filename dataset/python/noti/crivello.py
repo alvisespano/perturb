@@ -1,3 +1,4 @@
+
 def crivello_eratostene(n):
     L = list(range(2, n + 1))
     i = 0 
@@ -45,11 +46,11 @@ def crivello_eratostene__cp__cf(n):
     L = list(range(2, n + 1))
     i = 0
     a = L[i]
-    while (i+1 < 2 + len(L) - 3):
+    while (i + 1 < 2 + len(L) - 3):
         j = i + 1
         a = L[i] + 1
         while (j + 1 < 2 + len(L) - 1):
-            if (L[j] % (a-1) == 0):
+            if (L[j] % (a - 1) == 0):
                 L.remove(L[j])
             else:
                 j = j + 1

@@ -1,114 +1,279 @@
-I'm interested in comparing the semantics of small python programs.
+You are a chatbot for comparing the semantics of small python programs.
 I will provide you with multiple implementations of the same python function. 
 The first function is the reference version.
 The other functions are perturbed with copy propagation, constant folding or a combination of the two.
 Tell me whether the functions are semantically equivalent to the reference one or not.
 
-def remove_copies(L):
-    i = 0
-    while (i < len(L)):
-        j = i + 1
-        while (j < len(L)):
-            if (L[i] == L[j]):
-                del L[j]
-            else:
-                j = j + 1
-        i = i + 1
-    return(L) 
 
-def remove_copies__cp(L):
-    i = 0
-    while (i < len(L)):
-        j = i + 1
-        a = L[i] + 1
-        while (j < len(L)):
-            b = L[j] - 1
-            if (a - 1 == b + 1):
-                del L[j]
-            else:
-                j = j + 1
-        i = i + 1
-    return(L) 
+def f(a, b):
+    h = len(a)
+    w = len(a[0]) if h > 0 else 0
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            c = a[y][x] if 0 <= y < h and 0 <= x < w else (0, 0, 0)
+            for dy in range(b):
+                for dx in range(b):
+                    d[y * b + dy][x * b + dx] = c
 
-def remove_copies__cf(L):
-    i = 0
-    k = 1
-    while (i < len(L)):
-        j = i + k
-        while (j < len(L)):
-            if (L[i] == L[j]):
-                del L[j]
-            else:
-                j = j + k
-        i = i + k
-    return(L) 
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    c = d[y * b + dy][x * b + dx]
+                    cs.append(c)
+            r = sum(c[0] for c in cs) // len(cs)
+            g = sum(c[1] for c in cs) // len(cs)
+            b = sum(c[2] for c in cs) // len(cs)
+            o[y][x] = (r, g, b)
 
-def remove_copies__cp__cf(L):
-    i = 0
-    k = 1
-    while (i < len(L)):
-        j = i + k
-        a = L[i] + k
-        while (j < len(L)):
-            b = L[j] - k
-            if (a - k == b + k):
-                del L[j]
-            else:
-                j = j + k
-        i = i + k
-    return(L) 
+    return o
 
-def remove_copies__b(L):
-    i = 0
-    while (i < len(L)):
-        j = i + 1
-        while (j < len(L)):
-            if (L[i] == L[j]):
-                L.remove(L[j])
-            else:
-                j = j + 1
-        i = i + 1
-    return(L) 
 
-def remove_copies__cp__b(L):
-    i = 0
-    while (i < len(L)):
-        j = i + 1
-        a = L[i] + 1
-        while (j < len(L)):
-            b = L[j] - 1
-            if (a + 1 == b - 1):
-                del L[j]
-            else:
-                j = j + 1
-        i = i + 1
-    return(L) 
+def f__cp(a, b):
+    h = len(a)
+    w = len(a[0]) if h > 0 else 0
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            pc = a[y][x] if 0 <= y < h and 0 <= x < w else (0, 0, 0)
+            c = pc 
+            for dy in range(b):
+                for dx in range(b):
+                    dp = d[y * b + dy][x * b + dx]
+                    dp = c 
+                    d[y * b + dy][x * b + dx] = dp 
 
-def remove_copies__cf__b(L):
-    i = 0
-    k = 2
-    while (i < len(L)):
-        j = i + k
-        while (j < len(L)):
-            if (L[i] == L[j]):
-                del L[j]
-            else:
-                j = j + k
-        i = i + k
-    return(L) 
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    uc = d[y * b + dy][x * b + dx]
+                    c = uc 
+                    cs.append(c)
+            tr = sum(c[0] for c in cs)
+            tg = sum(c[1] for c in cs)
+            tb = sum(c[2] for c in cs)
+            nc = len(cs)
+            ar = tr // nc
+            ag = tg // nc
+            ab = tb // nc
+            op = (ar, ag, ab) 
+            o[y][x] = op 
 
-def remove_copies__cp__cf__b(L):
-    i = 0
-    k = 2
-    while (i < len(L)):
-        j = i + k
-        a = L[i] - k
-        while (j < len(L)):
-            b = L[j] - k
-            if (a - k == b + k):
-                del L[j]
-            else:
-                j = j + k
-        i = i + k
-    return(L) 
+    return o
 
+
+def f__cf(a, b):
+    tmp = 0
+    h = len(a)
+    w = len(a[tmp]) if h > 0 else 0
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            c = a[y][x] if tmp <= y < h and tmp <= x < w else (tmp, tmp, tmp)
+            for dy in range(b):
+                for dx in range(b):
+                    d[y * b + dy][x * b + dx] = c
+
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            foo = 1
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    c = d[y * b + dy][x * b + dx]
+                    cs.append(c)
+            r = sum(c[foo - 1] for c in cs) // len(cs)
+            g = sum(c[foo] for c in cs) // len(cs)
+            b = sum(c[foo + 1] for c in cs) // len(cs)
+            o[y][x] = (r, g, b)
+
+    return o
+
+
+def f__cp__cf(a, b):
+    tmp = 0
+    h = len(a)
+    w = len(a[tmp]) if h > 0 else tmp
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            pc = a[y][x] if tmp <= y < h and tmp <= x < w else (0, tmp, 0)
+            c = pc 
+            for dy in range(b):
+                for dx in range(b):
+                    dp = d[y * b + dy][x * b + dx]
+                    dp = c 
+                    d[y * b + dy][x * b + dx] = dp 
+
+    o = [[(tmp, 0, tmp) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            foo = tmp + 1
+            for dy in range(b):
+                for dx in range(b):
+                    uc = d[y * b + dy][x * b + dx]
+                    c = uc 
+                    cs.append(c)
+            tr = sum(c[foo - 1] for c in cs)
+            tg = sum(c[foo + tmp] for c in cs)
+            tb = sum(c[foo + 1] for c in cs)
+            ns = len(cs)
+            ar = tr // ns
+            ag = tg // ns
+            ab = tb // ns
+            op = (ar, ag, ab) 
+            o[y][x] = op 
+
+    return o
+
+
+def f__b(a, b):
+    h = len(a)
+    w = len(a[0]) if h > 0 else 0
+    H = h * b
+    W = w / b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            c = a[y][x] if 0 <= y < h and 0 <= x < w else (0, 0, 0)
+            for dy in range(b):
+                for dx in range(b):
+                    d[y * b + dy][x * b + dx] = c
+
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    c = d[y * b + dy][x * b - dx]
+                    cs.append(c)
+            r = sum(c[0] for c in cs) // len(cs)
+            g = sum(c[1] for c in cs) // len(cs)
+            b = sum(c[2] for c in cs) // len(cs)
+            o[y][x] = (r, g, b)
+
+    return o
+
+def f__cp__b(a, b):
+    h = len(a)
+    w = len(a[0]) if h > 0 else 0
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            pc = a[y][x] if 0 <= y < h and 0 <= x < w else (0, 0, 0)
+            c = pc 
+            for dy in range(b):
+                for dx in range(b):
+                    dp = d[y * b + dy][x * b + dx]
+                    pc = c 
+                    d[y * b + dy][x * b + dx] = dp 
+
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    uc = d[y * b + dy][x * b + dx]
+                    c = uc 
+                    cs.append(c)
+            tr = sum(c[0] for c in cs)
+            tg = sum(c[1] for c in cs)
+            tb = sum(c[2] for c in cs)
+            nc = len(cs)
+            ar = tr // nc
+            ag = tg // nc
+            ab = tb // nc
+            op = (ar, ag, ab) 
+            o[y][x] = op 
+
+    return o
+
+
+def f__cf__b(a, b):
+    tmp = 0
+    h = len(a)
+    w = len(a[tmp]) if h > 0 else 0
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            c = a[y][x] if tmp <= y < h and tmp <= x < w else (tmp, tmp, tmp + 1)
+            for dy in range(b):
+                for dx in range(b):
+                    d[y * b + dy][x * b + dx] = c
+
+    o = [[(0, 0, 0) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            foo = 1
+            cs = []
+            for dy in range(b):
+                for dx in range(b):
+                    c = d[y * b + dy][x * b + dx]
+                    cs.append(c)
+            r = sum(c[foo + tmp] for c in cs) // len(cs)
+            g = sum(c[foo] for c in cs) // len(cs)
+            b = sum(c[foo + 1] for c in cs) // len(cs)
+            o[y][x] = (r, g, b)
+
+    return o
+
+def f__cp__cf__b(a, b):
+    tmp = 1
+    h = len(a)
+    w = len(a[tmp]) if h > 0 else tmp
+    H = h * b
+    W = w * b
+    d = [[(0, 0, 0) for _ in range(W)] for _ in range(H)]
+    for y in range(h):
+        for x in range(w):
+            pc = a[y][x] if tmp <= y < h and tmp <= x < w else (0, tmp, 0)
+            c = pc 
+            for dy in range(b):
+                for dx in range(b):
+                    dp = d[y * b + dy][x * b + dx]
+                    dp = c 
+                    d[y * b + dy][x * b + dx] = dp 
+
+    o = [[(tmp, 0, tmp) for _ in range(w)] for _ in range(h)]
+    for y in range(h):
+        for x in range(w):
+            cs = []
+            foo = tmp + 1
+            for dy in range(b):
+                for dx in range(b):
+                    uc = d[y * b + dy][x * b + dx]
+                    c = uc 
+                    cs.append(c)
+            tr = sum(c[foo - 1] for c in cs)
+            tg = sum(c[foo + tmp] for c in cs)
+            tb = sum(c[foo + 1] for c in cs)
+            ns = len(cs)
+            ar = tr // ns
+            ag = tg // ns
+            ab = tb // ns
+            op = (ar, ag, ab) 
+            o[y][x] = op 
+
+    return o

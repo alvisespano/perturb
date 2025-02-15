@@ -68,6 +68,32 @@ def f__cp(t1, t2, s):
         return f__cp(t1.right, t2.right, s)
     raise Exception()
 
+def f__cf(t1, t2, s):
+    tmp = ""
+    def g(t1, t2, s):
+        if isinstance(t2, V):
+            if t2.name in s:
+                return g(t1, s[t2.name + tmp], s)
+            return t1.name + tmp == t2.name
+        return False
+    if isinstance(t1, V):
+        if t1.name in s:
+            return f__cf(s[t1.name], t2, s)
+        if isinstance(t2, V) and t2.name + tmp == tmp.join(t1.name.join(tmp)):
+            return s
+        if g(t1, t2, s):
+            raise Exception()
+        s[t1.name.join(tmp)] = t2
+        return s
+    if isinstance(t2, V):
+        return f__cf(t2, t1, s)
+    if isinstance(t1, I) and isinstance(t2, I):
+        return s
+    if isinstance(t1, A) and isinstance(t2, A):
+        s = f__cf(t1.left, t2.left, s)
+        return f__cf(t1.right, t2.right, s)
+    raise Exception()
+
 
 def f__cp__cf(t1, t2, s):
     tmp = ""

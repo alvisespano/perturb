@@ -2,127 +2,113 @@ I'm interested in comparing the semantics of small python programs.
 I will provide you with multiple implementations of the same python function. 
 The first function is the reference version.
 The other functions are perturbed with copy propagation, constant folding or a combination of the two.
-Tell me whether the functions semantically equivalent to the reference one or not.
+Tell me whether the functions are semantically equivalent to the reference one or not.
 
-
-def crivello_eratostene(n):
-    L = list(range(2, n + 1))
-    i = 0 
-    while (i < len(L)):
-        j = i + 1 
-        while (j < len(L)):
-            if (L[j] % L[i] == 0):
-                L.remove(L[j])
-            else:
-                j = j + 1
-        i = i + 1
-    return L
-
-def crivello_eratostene__cp(n):  
-    L = list(range(2, n + 1))
-    i = 0 
+def remove_copies(L):
+    i = 0
     while (i < len(L)):
         j = i + 1
-        a = L[i]
         while (j < len(L)):
-            if (L[j] % a == 0):
-                L.remove(L[j])
-                a = a + 1
-            else:
-                a = a + 1
-                j = j + 1
-            a = a-1
-        i = i + 1
-    return L
-
-def crivello_eratostene__cf(n): 
-    L = list(range(2, n + 1))
-    tmp = 0
-    i = tmp
-    while (i < len(L)):
-        j = i + 1 - tmp
-        while (j < len(L)):
-            if (L[j] % L[i] == tmp):
-                L.remove(L[j])
+            if (L[i] == L[j]):
+                del L[j]
             else:
                 j = j + 1
         i = i + 1
-    return L
+    return(L) 
 
-def crivello_eratostene__cp__cf(n): 
-    L = list(range(2, n + 1))
+def remove_copies__cp(L):
     i = 0
-    a = L[i]
-    while (i + 1 < 2 + len(L) - 3):
+    while (i < len(L)):
         j = i + 1
         a = L[i] + 1
-        while (j + 1 < 2 + len(L) - 1):
-            if (L[j] % (a - 1) == 0):
-                L.remove(L[j])
+        while (j < len(L)):
+            b = L[j] - 1
+            if (a - 1 == b + 1):
+                del L[j]
             else:
                 j = j + 1
-        a = a - 1
         i = i + 1
-    return L
+    return(L) 
 
-def crivello_eratostene__b(n):
-    L = list(range(2, n + 1))
-    i = 0 
+def remove_copies__cf(L):
+    i = 0
+    k = 1
     while (i < len(L)):
-        j = i + 1 
-        while (j + 1 < 2 + len(L) - 1):
-            if (L[j] % L[i] == 0):
-                L.remove(L[j])
+        j = i + k
+        while (j < len(L)):
+            if (L[i] == L[j]):
+                del L[j]
             else:
-                j = j + 1
-        i = i + 1
-    return L
+                j = j + k
+        i = i + k
+    return(L) 
 
-def crivello_eratostene__cp__b(n):  
-    L = list(range(2, n + 1))
-    i = 0 
+def remove_copies__cp__cf(L):
+    i = 0
+    k = 1
+    while (i < len(L)):
+        j = i + k
+        a = L[i] + k
+        while (j < len(L)):
+            b = L[j] - k
+            if (a - k == b + k):
+                del L[j]
+            else:
+                j = j + k
+        i = i + k
+    return(L) 
+
+def remove_copies__b(L):
+    i = 0
     while (i < len(L)):
         j = i + 1
-        a = L[i]
         while (j < len(L)):
-            if (L[j] % a == 0):
-                L.remove(L[j])
-                a = a + 1
-            else:
-                a = a - 1
-                j = j + 1
-            a = a-1
-        i = i + 1
-    return L
-
-def crivello_eratostene__cf__b(n): 
-    L = list(range(2, n + 1))
-    tmp = 0
-    i = tmp
-    while (i < len(L)):
-        j = i + 1 + tmp
-        while (j < len(L)):
-            if (L[j] % L[i] == tmp):
+            if (L[i] == L[j]):
                 L.remove(L[j])
             else:
                 j = j + 1
         i = i + 1
-    return L
+    return(L) 
 
-def crivello_eratostene__cp__cf__b(n): 
-    L = list(range(2, n + 1))
-    i = 0 
-    tmp = i
+def remove_copies__cp__b(L):
+    i = 0
     while (i < len(L)):
         j = i + 1
-        a = L[i]
+        a = L[i] + 1
         while (j < len(L)):
-            if (L[j] % a == tmp):
-                L.remove(L[j])
-                a = a + 1
+            b = L[j] - 1
+            if (a + 1 == b - 1):
+                del L[j]
             else:
-                a = a - 1
                 j = j + 1
-            a = a - 1
         i = i + 1
-    return L
+    return(L) 
+
+def remove_copies__cf__b(L):
+    i = 0
+    k = 2
+    while (i < len(L)):
+        j = i + k
+        while (j < len(L)):
+            if (L[i] == L[j]):
+                del L[j]
+            else:
+                j = j + k
+        i = i + k
+    return(L) 
+
+def remove_copies__cp__cf__b(L):
+    i = 0
+    k = 2
+    while (i < len(L)):
+        j = i + k
+        a = L[i] - k
+        while (j < len(L)):
+            b = L[j] - k
+            if (a - k == b + k):
+                del L[j]
+            else:
+                j = j + k
+        i = i + k
+    return(L) 
+

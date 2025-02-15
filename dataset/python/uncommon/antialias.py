@@ -233,7 +233,7 @@ def f__cf__b(a, b):
 
     return o
 
-def f__cp__cf(a, b):
+def f__cp__cf__b(a, b):
     tmp = 1
     h = len(a)
     w = len(a[tmp]) if h > 0 else tmp

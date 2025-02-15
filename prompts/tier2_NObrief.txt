@@ -2,7 +2,7 @@ I'm interested in comparing the semantics of small python programs.
 I will provide you with multiple implementations of the same python function. 
 The first function is the reference version.
 The other functions are perturbed with copy propagation, constant folding or a combination of the two.
-Tell me whether the functions semantically equivalent to the reference one or not?
+Tell me whether the functions semantically equivalent to the reference one or not.
 
 
 def crivello_eratostene(n):

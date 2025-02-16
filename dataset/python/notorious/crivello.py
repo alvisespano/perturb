@@ -64,7 +64,7 @@ def crivello_eratostene__b(n):
     i = 0 
     while (i < len(L)):
         j = i + 1 
-        while (j + 1 < 2 + len(L) - 1):
+        while (j + 1 < 2 + len(L)):
             if (L[j] % L[i] == 0):
                 L.remove(L[j])
             else:

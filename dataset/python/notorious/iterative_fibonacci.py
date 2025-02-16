@@ -63,7 +63,7 @@ def ifib__cp__cf(x):
                tmp = 3 * tmp - 23  
           else: 
                tmp = tmp - 1 
-          x = x-1
+          x = x - 1
           tmp = tmp + 2 
      return p
 
@@ -130,7 +130,7 @@ def ifib__cp__cf__b(x):
                tmp = 3 * tmp + 23  
           else: 
                tmp = tmp - 1 
-          x = x-1
+          x = x - 1
           tmp = tmp + 2 
      return p
 

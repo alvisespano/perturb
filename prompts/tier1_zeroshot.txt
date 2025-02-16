@@ -1,0 +1,2 @@
+are the following functions semantically equivalent?
+

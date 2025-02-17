@@ -1,0 +1,33 @@
+I'm interested in applying code transformation rules to small python programs.
+I will provide you with multiple implementations of the same python function.
+The first function is the reference version. The other functions are unoptimized via some code perturbations.
+Below I am giving you some formal rewriting rules that you can apply to transform the perturbed code and get to the optimized/reference version.
+Applying the rules preserves the semantics of the original program.
+
+RULE 1
+------
+x = y;
+z = x + t; 
+S				// S is the rest of the program
+==> 
+z = y + t;
+x = y;
+S
+
+
+Now I am going to paste 3 variants of the same python function.
+Please, strictly apply these rules and tell me whether the resulting programs are semantically equivalent to the reference version or not.
+
+
+First snippet:
+a = b;
+x = y; 
+z = x + 5 * w;
+w = x + z / a;
+
+
+Second snippet:
+z = y + 5 * w;
+w = y + z / b;
+x = y;
+a = b;

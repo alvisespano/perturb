@@ -1,0 +1,71 @@
+I'm interested in applying code transformation rules to small python programs.
+I will provide you with multiple implementations of the same python function.
+The first function is the reference version. The other functions are unoptimized via some code perturbations.
+Below I am giving you some formal rewriting rules that you can apply to transform the perturbed code and get to the optimized/reference version.
+Applying the rules preserves the semantics of the original program.
+
+RULE 1
+x = y ; z = x op E  where op is an operator and E is an expression does not contain x 
+==> z = y op E ; x = y
+
+RULE 2
+x = y ; z = E  where E does not contain x 
+==> z = E ; x = y
+
+RULE 3
+x = k ; z = x op E  where k is a constant and op is an operator and E in an expression
+==>  x = k ; z = k op E
+
+
+Now I am going to paste 3 variants of the same python function.
+Please, strictly apply these rules and tell me whether the resulting programs are semantically equivalent to the reference version or not.
+
+def find_max_count(A):  
+    length = len(A) 
+    max_frequency = 0
+    most_frequent = 0
+    for i in range(length):
+        count = 0
+        for j in range(i + 1, length):
+            if A[i] == A[j]:
+                count += 1
+        if count > max_frequency:
+            max_frequency = count
+            most_frequent = A[i]
+    return most_frequent
+	
+def find_max_count__cp(A):  
+    length = len(A) 
+    max_frequency = 0
+    most_frequent = 0
+    tmp = most_frequent
+    for i in range(length):
+        count = 0
+        U = A
+        for j in range(i + 1, length):
+            k = j + 1
+            if U[i] == A[k - 1]:
+                count += 1
+        if count > max_frequency:
+            max_frequency = count
+            most_frequent = U[i]
+            tmp = most_frequent
+    return tmp
+	
+def find_max_count__b(A):  
+    length = len(A) 
+    max_frequency = 0
+    most_frequent = 0
+    tmp = most_frequent
+    for i in range(length):
+        count = 0
+        U = A
+        for j in range(i + 1, length):
+            k = j
+            if U[i] == A[k - 1]:
+                count += 1
+        if count > max_frequency:
+            max_frequency = count
+            most_frequent = U[i]
+            tmp = most_frequent
+    return tmp

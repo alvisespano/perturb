@@ -1,4 +1,4 @@
-def find_max_count(A):  
+def f(A):  
     length = len(A) 
     max_frequency = 0
     most_frequent = 0
@@ -12,7 +12,7 @@ def find_max_count(A):
             most_frequent = A[i]
     return most_frequent
 
-def find_max_count__cp(A):  
+def f__cp(A):  
     length = len(A) 
     max_frequency = 0
     most_frequent = 0
@@ -30,7 +30,7 @@ def find_max_count__cp(A):
             tmp = most_frequent
     return tmp
 
-def find_max_count__cf(A):  
+def f__cf(A):  
     length = len(A) 
     foo = 1
     max_frequency = 0
@@ -45,7 +45,7 @@ def find_max_count__cf(A):
             most_frequent = A[i]
     return most_frequent
 
-def find_max_count__cp__cf(A):  
+def f__cp__cf(A):  
     length = len(A) 
     foo = 1
     max_frequency = 0
@@ -64,7 +64,7 @@ def find_max_count__cp__cf(A):
             tmp = most_frequent
     return tmp
 
-def find_max_count__b(A):
+def f__b(A):
     length = len(A) 
     max_frequency = 0
     most_frequent = 0
@@ -78,7 +78,7 @@ def find_max_count__b(A):
             most_frequent = A[i]
     return most_frequent
 
-def find_max_count__cp__b(A):  
+def f__cp__b(A):  
     length = len(A) 
     max_frequency = 0
     most_frequent = 0
@@ -96,7 +96,7 @@ def find_max_count__cp__b(A):
             tmp = most_frequent
     return tmp
 
-def find_max_count__cf__b(A):  
+def f__cf__b(A):  
     length = len(A) 
     foo = 2
     max_frequency = 0
@@ -111,7 +111,7 @@ def find_max_count__cf__b(A):
             most_frequent = A[i]
     return most_frequent
 
-def find_max_count__cp__cf__b(A):  
+def f__cp__cf__b(A):  
     length = len(A) 
     foo = 1
     max_frequency = foo

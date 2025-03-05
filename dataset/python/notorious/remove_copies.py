@@ -1,4 +1,4 @@
-def remove_copies(L):
+def f(L):
     i = 0
     while (i < len(L)):
         j = i + 1
@@ -10,7 +10,7 @@ def remove_copies(L):
         i = i + 1
     return(L) 
 
-def remove_copies__cp(L):
+def f__cp(L):
     i = 0
     while (i < len(L)):
         j = i + 1
@@ -24,7 +24,7 @@ def remove_copies__cp(L):
         i = i + 1
     return(L) 
 
-def remove_copies__cf(L):
+def f__cf(L):
     i = 0
     k = 1
     while (i < len(L)):
@@ -37,7 +37,7 @@ def remove_copies__cf(L):
         i = i + k
     return(L) 
 
-def remove_copies__cp__cf(L):
+def f__cp__cf(L):
     i = 0
     k = 1
     while (i < len(L)):
@@ -52,7 +52,7 @@ def remove_copies__cp__cf(L):
         i = i + k
     return(L) 
 
-def remove_copies__b(L):
+def f__b(L):
     i = 0
     while (i < len(L)):
         j = i + 1
@@ -64,7 +64,7 @@ def remove_copies__b(L):
         i = i + 1
     return(L) 
 
-def remove_copies__cp__b(L):
+def f__cp__b(L):
     i = 0
     while (i < len(L)):
         j = i + 1
@@ -78,7 +78,7 @@ def remove_copies__cp__b(L):
         i = i + 1
     return(L) 
 
-def remove_copies__cf__b(L):
+def f__cf__b(L):
     i = 0
     k = 2
     while (i < len(L)):
@@ -91,7 +91,7 @@ def remove_copies__cf__b(L):
         i = i + k
     return(L) 
 
-def remove_copies__cp__cf__b(L):
+def f__cp__cf__b(L):
     i = 0
     k = 2
     while (i < len(L)):

@@ -1,5 +1,5 @@
 
-def ifib(x):
+def f(x):
      n = 0
      m = 1
      if x == 0:
@@ -13,7 +13,7 @@ def ifib(x):
           x = x - 1
      return p
 
-def ifib__cp(x):
+def f__cp(x):
      n = 0
      m = 1
      tmp = m
@@ -30,7 +30,7 @@ def ifib__cp(x):
      return p
 
 
-def ifib__cf(x):
+def f__cf(x):
      foo = 0
      bar = 1
      n = foo
@@ -46,7 +46,7 @@ def ifib__cf(x):
           x = x - bar
      return p
 
-def ifib__cp__cf(x):
+def f__cp__cf(x):
      n = 0
      m = 1
      if x == 0:
@@ -67,7 +67,7 @@ def ifib__cp__cf(x):
           tmp = tmp + 2 
      return p
 
-def ifib__b(x):
+def f__b(x):
      n = 0
      m = 1
      if x == 0:
@@ -81,7 +81,7 @@ def ifib__b(x):
           x = x - 1
      return p
 
-def ifib__cp__b(x):
+def f__cp__b(x):
      n = 0
      m = 1
      tmp = m
@@ -97,7 +97,7 @@ def ifib__cp__b(x):
           tmp = n
      return p
 
-def ifib__cf__b(x):
+def f__cf__b(x):
      foo = 0
      bar = 1
      n = foo
@@ -113,7 +113,7 @@ def ifib__cf__b(x):
           x = x + bar
      return p
 
-def ifib__cp__cf__b(x):
+def f__cp__cf__b(x):
      n = 0
      m = 1
      if x == 0:

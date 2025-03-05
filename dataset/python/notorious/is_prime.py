@@ -1,5 +1,5 @@
 
-def is_prime(n):
+def f(n):
     if n <= 1:
         return False    
     elif n <= 3:
@@ -19,7 +19,7 @@ def is_prime(n):
         else:
             return True
         
-def is_prime__cp(n):
+def f__cp(n):
     tmp = n
     if n <= 1:
         return False
@@ -40,7 +40,7 @@ def is_prime__cp(n):
         else:
             return True
        
-def is_prime__cf(n):
+def f__cf(n):
     foo = 2
     if n <= 1:
         return False    
@@ -62,7 +62,7 @@ def is_prime__cf(n):
         else:
             return True
 
-def is_prime__cp__cf(n):
+def f__cp__cf(n):
     if n <= 1:
         return False
     elif n <= 3:
@@ -84,7 +84,7 @@ def is_prime__cp__cf(n):
         else:
             return True
 
-def is_prime__b(n):
+def f__b(n):
     if n <= 1:
         return False    
     elif n <= 3:
@@ -104,7 +104,7 @@ def is_prime__b(n):
         else:
             return True
 
-def is_prime__cp__b(n):
+def f__cp__b(n):
     tmp = n
     if n <= 1:
         return False
@@ -125,7 +125,7 @@ def is_prime__cp__b(n):
         else:
             return True
 
-def is_prime__cf__b(n):
+def f__cf__b(n):
     foo = 2
     if n <= 1:
         return False    
@@ -147,7 +147,7 @@ def is_prime__cf__b(n):
         else:
             return True
 
-def is_prime__cp__cf__b(n):
+def f__cp__cf__b(n):
     if n <= 1:
         return False
     elif n <= 3:

@@ -1,5 +1,5 @@
 
-def bubblesort(A):   
+def f(A):   
     length = len(A)
     for i in range(length):
         for j in range(0, length - i - 1):
@@ -9,7 +9,7 @@ def bubblesort(A):
                 A[j + 1] = temp
     return A
 
-def bubblesort__cp(A):
+def f__cp(A):
     length = len(A)
     for i in range(length):
         U = A 
@@ -21,7 +21,7 @@ def bubblesort__cp(A):
                 A[k] = temp
     return U
 
-def bubblesort__cf(A):   
+def f__cf(A):   
     length = len(A)
     for i in range(length):
         for j in range(0, length - i - 1):
@@ -33,7 +33,7 @@ def bubblesort__cf(A):
                 A[j - bar] = temp
     return A
 
-def bubblesort__cp__cf(A):   
+def f__cp__cf(A):   
     length = len(A)
     for i in range(length):
         U = A 
@@ -47,7 +47,7 @@ def bubblesort__cp__cf(A):
                 A[k] = temp
     return U
 
-def bubblesort__b(A):   
+def f__b(A):   
     length = len(A)
     for i in range(length):
         for j in range(0, length - i - 1):
@@ -57,7 +57,7 @@ def bubblesort__b(A):
                 A[j + 1] = temp
     return A
 
-def bubblesort__cp__b(A):
+def f__cp__b(A):
     length = len(A)
     for i in range(length):
         U = A.copy()
@@ -69,7 +69,7 @@ def bubblesort__cp__b(A):
                 A[k] = temp
     return U
 
-def bubblesort__cf__b(A):   
+def f__cf__b(A):   
     length = len(A)
     for i in range(length):
         for j in range(0, length - i - 1):
@@ -81,7 +81,7 @@ def bubblesort__cf__b(A):
                 A[j - bar] = temp
     return A
 
-def bubblesort__cp__cf__b(A):   
+def f__cp__cf__b(A):   
     length = len(A)
     for i in range(length):
         U = A.copy()

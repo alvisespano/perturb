@@ -1,5 +1,5 @@
 
-def find_duplicate(A):  
+def f(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -17,7 +17,7 @@ def find_duplicate(A):
     else:
         return -1
     
-def find_duplicate__cp(A):  
+def f__cp(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -36,7 +36,7 @@ def find_duplicate__cp(A):
     else:
         return -1
        
-def find_duplicate__cf(A):  
+def f__cf(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -55,7 +55,7 @@ def find_duplicate__cf(A):
     else:
         return -1
        
-def find_duplicate__cp__cf(A):  
+def f__cp__cf(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -75,7 +75,7 @@ def find_duplicate__cp__cf(A):
     else:
         return -1
     
-def find_duplicate__b(A):  
+def f__b(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -93,7 +93,7 @@ def find_duplicate__b(A):
     else:
         return -1
 
-def find_duplicate__cp__b(A):  
+def f__cp__b(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -112,7 +112,7 @@ def find_duplicate__cp__b(A):
     else:
         return -1
 
-def find_duplicate__cf__b(A):  
+def f__cf__b(A):  
     i = 0
     length = len(A) 
     trovato = False
@@ -131,7 +131,7 @@ def find_duplicate__cf__b(A):
     else:
         return -1
 
-def find_duplicate__cp__cf__b(A):  
+def f__cp__cf__b(A):  
     i = 0
     length = len(A) 
     trovato = False

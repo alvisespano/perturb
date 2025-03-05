@@ -1,5 +1,5 @@
 
-def crivello_eratostene(n):
+def f(n):
     L = list(range(2, n + 1))
     i = 0 
     while (i < len(L)):
@@ -12,7 +12,7 @@ def crivello_eratostene(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cp(n):  
+def f__cp(n):  
     L = list(range(2, n + 1))
     i = 0 
     while (i < len(L)):
@@ -29,7 +29,7 @@ def crivello_eratostene__cp(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cf(n): 
+def f__cf(n): 
     L = list(range(2, n + 1))
     tmp = 0
     i = tmp
@@ -43,7 +43,7 @@ def crivello_eratostene__cf(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cp__cf(n): 
+def f__cp__cf(n): 
     L = list(range(2, n + 1))
     i = 0
     a = L[i]
@@ -59,7 +59,7 @@ def crivello_eratostene__cp__cf(n):
         i = i + 1
     return L
 
-def crivello_eratostene__b(n):
+def f__b(n):
     L = list(range(2, n + 1))
     i = 0 
     while (i < len(L)):
@@ -72,7 +72,7 @@ def crivello_eratostene__b(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cp__b(n):  
+def f__cp__b(n):  
     L = list(range(2, n + 1))
     i = 0 
     while (i < len(L)):
@@ -89,7 +89,7 @@ def crivello_eratostene__cp__b(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cf__b(n): 
+def f__cf__b(n): 
     L = list(range(2, n + 1))
     tmp = 0
     i = tmp
@@ -103,7 +103,7 @@ def crivello_eratostene__cf__b(n):
         i = i + 1
     return L
 
-def crivello_eratostene__cp__cf__b(n): 
+def f__cp__cf__b(n): 
     L = list(range(2, n + 1))
     i = 0 
     tmp = i

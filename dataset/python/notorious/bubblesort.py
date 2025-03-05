@@ -100,7 +100,17 @@ def f__cp__cf__b(A):
 #################################################
 
 import random
-import "..
+
+def test_functions(funcs, test_cases):
+    for i, test_case in enumerate(test_cases):
+        expected = funcs[0](test_case[:])
+        print(f"Test case {i + 1}: {test_case}")
+        for func in funcs:
+            result = func(test_case[:])
+            if result != expected:
+                print(f"\t❌ {func.__name__} produced {result}, expected {expected}")
+            else:
+                print(f"\t✅ {func.__name__} successful")
 
 functions = [f, f__cp, f__cf, f__cp__cf, f__b, f__cp__b, f__cf__b, f__cp__cf__b]
 

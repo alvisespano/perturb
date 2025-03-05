@@ -123,3 +123,35 @@ def f__cp__cf__b(x, y, z, a, b, c):
     y3 = x2 * sc + y2 * cc
     z3 = z1
     return x3, y3, z3
+
+############################################
+############################################
+############################################
+############################################
+
+import math
+
+def test_functions(functions, test_cases):
+    for test in test_cases:
+        x, y, z, a, b, c = test["input"]
+        expected = functions["f"](x, y, z, a, b, c)
+
+        results = {name: func(x, y, z, a, b, c) for name, func in functions.items()}
+        assert all(res == expected for res in results.values()), f"Mismatch: {results}"
+
+    print("All tests passed!")
+
+functions = {
+    "f": f, "f__cp": f__cp, "f__cf": f__cf, "f__cp__cf": f__cp__cf,
+    "f__b": f__b, "f__cp__b": f__cp__b, "f__cf__b": f__cf__b, "f__cp__cf__b": f__cp__cf__b
+}
+
+test_cases = [
+    {"input": (1, 2, 3, math.pi/4, math.pi/6, math.pi/3)},
+    {"input": (0, 0, 0, 0, 0, 0)},
+    {"input": (-1, -2, -3, math.pi/2, math.pi/2, math.pi/2)},
+    {"input": (3.5, -1.2, 4.8, math.pi, math.pi/4, math.pi/8)},
+    {"input": (10, 20, 30, -math.pi/3, -math.pi/6, -math.pi/4)},
+]
+
+test_functions(functions, test_cases)

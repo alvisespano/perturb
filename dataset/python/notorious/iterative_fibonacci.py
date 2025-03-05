@@ -134,3 +134,32 @@ def f__cp__cf__b(x):
           tmp = tmp + 2 
      return p
 
+###################################################
+###################################################
+###################################################
+###################################################
+
+import random
+
+def test_functions(funcs, test_cases):
+    for i, test_case in enumerate(test_cases):
+        expected = funcs[0](test_case)
+        print(f"Test case {i + 1}: {test_case}")
+        for func in funcs:
+            result = func(test_case)
+            if result != expected:
+                print(f"\t❌ {func.__name__} produced {result}, expected {expected}")
+            else:
+                print(f"\t✅ {func.__name__} successful")
+
+functions = [
+    f, f__cp, f__cf, f__cp__cf, 
+    f__b, f__cp__b, f__cf__b, f__cp__cf__b
+]
+
+test_cases = [
+    0, 1, 2, 3, 4, 5, 
+    random.randint(6, 15), random.randint(15, 30)
+]
+
+test_functions(functions, test_cases)

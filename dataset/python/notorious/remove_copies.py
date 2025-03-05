@@ -106,3 +106,36 @@ def f__cp__cf__b(L):
         i = i + k
     return(L) 
 
+###################################################
+###################################################
+###################################################
+###################################################
+
+import random
+
+def test_functions(funcs, test_cases):
+    for i, test_case in enumerate(test_cases):
+        expected = funcs[0](test_case)
+        print(f"Test case {i + 1}: {test_case}")
+        for func in funcs:
+            result = func(test_case)
+            if result != expected:
+                print(f"\t❌ {func.__name__} produced {result}, expected {expected}")
+            else:
+                print(f"\t✅ {func.__name__} successful")
+
+functions = [
+    f, f__cp, f__cf, f__cp__cf, 
+    f__b, f__cp__b, f__cf__b, f__cp__cf__b
+]
+
+test_cases = [
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 
+    [1, 1, 2, 3, 4, 5, 6, 7, 8], 
+    [3, 5, 7, 3, 9, 5], 
+    [10, 20, 30, 40, 50, 60, 10],  
+    [100, 200, 300, 400, 500, 600, 700, 100],  
+    [random.randint(0, 100) for _ in range(20)]  
+]
+
+test_functions(functions, test_cases)

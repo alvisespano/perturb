@@ -101,3 +101,34 @@ def f__cp__cf__b(x):
     h1 = [a[k] - T[k] for k in Ns2]
     h2 = [a[k] - T[k] for k in Ns2]
     return h1 + h2
+
+##################################
+##################################
+##################################
+
+import cmath
+
+def test_functions(functions, test_cases):
+    for test in test_cases:
+        x = test["input"]
+        expected = functions["f"](x)
+
+        results = {name: func(x) for name, func in functions.items()}
+        assert all(res == expected for res in results.values()), f"Mismatch: {results}"
+
+    print("All tests passed!")
+
+functions = {
+    "f": f, "f__cp": f__cp, "f__cf": f__cf, "f__cp__cf": f__cp__cf,
+    "f__b": f__b, "f__cp__b": f__cp__b, "f__cf__b": f__cf__b, "f__cp__cf__b": f__cp__cf__b
+}
+
+test_cases = [
+    {"input": [1, 2, 3, 4]},
+    {"input": [1 + 1j, 2 - 1j, 3 + 2j, 4 - 2j]},
+    {"input": [0, 0, 0, 0]},
+    {"input": [1, -1, 1, -1]},
+    {"input": [complex(i, -i) for i in range(8)]},
+]
+
+test_functions(functions, test_cases)

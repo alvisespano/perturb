@@ -129,3 +129,35 @@ def f__cp__cf__b(A):
             most_frequent = U[i]
             tmp = most_frequent
     return tmp
+
+######################################
+######################################
+######################################
+
+import random
+
+def test_functions(funcs, test_cases):
+    for i, test_case in enumerate(test_cases):
+        expected = funcs[0](test_case)
+        print(f"Test case {i + 1}: {test_case}")
+        for func in funcs:
+            result = func(test_case)
+            if result != expected:
+                print(f"\t❌ {func.__name__} produced {result}, expected {expected}")
+            else:
+                print(f"\t✅ {func.__name__} successful")
+
+functions = [f, f__cp, f__cf, f__cp__cf, f__b, f__cp__b, f__cf__b, f__cp__cf__b]
+
+test_cases = [
+    [8, 8, 8, 1, 1, 1, 1, 5, 5],
+    [15, 12, 12, 12, 15, 18, 18, 15],
+    [7, 9, 7, 7, 9, 9, 9],
+    [3, 3, 3, 1, 1, 2, 2, 2, 2, 5],
+    [random.randint(1, 100) for _ in range(30)],
+    [100, 200, 300, 400, 100, 100, 200],
+    [5, 5, 5, 5, 5, 5, 5],
+    [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6]
+]
+
+test_functions(functions, test_cases)

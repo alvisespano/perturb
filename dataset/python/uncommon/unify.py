@@ -238,3 +238,32 @@ def f__cp__cf__b(t1, t2, s):
         s = f__cp__cf__b(t1.left, t2.left, s)
         return f__cp__cf__b(t1.right, t2.right, s)
     raise Exception()
+
+##########################################
+##########################################
+##########################################
+
+def test_functions(functions, test_cases):
+    for test in test_cases:
+        t1, t2, s = test["input"]
+        expected = functions["f"](t1, t2, s.copy())
+
+        results = {name: func(t1, t2, s.copy()) for name, func in functions.items()}
+        assert all(res == expected for res in results.values()), f"Mismatch: {results}"
+
+    print("All tests passed!")
+
+functions = {
+    "f": f, "f__cp": f__cp, "f__cf": f__cf, "f__cp__cf": f__cp__cf,
+    "f__b": f__b, "f__cp__b": f__cp__b, "f__cf__b": f__cf__b, "f__cp__cf__b": f__cp__cf__b
+}
+
+test_cases = [
+    {"input": (V("x"), V("y"), {})},
+    {"input": (V("x"), A(V("y"), I()), {})},
+    {"input": (A(V("x"), V("y")), A(V("a"), V("b")), {})},
+    {"input": (V("x"), V("x"), {"x": I()})},
+    {"input": (A(V("x"), I()), A(I(), V("y")), {"y": V("x")})},
+]
+
+test_functions(functions, test_cases)

@@ -94,3 +94,24 @@ def f__cp__cf__b(A):
                 U[j] = A[j + 1] 
                 A[k] = temp
     return U
+
+#################################################
+#################################################
+#################################################
+
+import random
+import "..
+
+functions = [f, f__cp, f__cf, f__cp__cf, f__b, f__cp__b, f__cf__b, f__cp__cf__b]
+
+test_cases = [
+    [],
+    [1],
+    [2, 1],
+    [3, 2, 1],
+    [1, 3, 2, 4],
+    [5, 3, 8, 6, 2, 1],
+    [random.randint(0, 100) for _ in range(10)]
+]
+
+test_functions(functions, test_cases)

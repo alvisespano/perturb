@@ -271,3 +271,31 @@ def f__cp__cf__b(a, b):
             o[y][x] = op 
 
     return o
+
+#######################################
+#######################################
+#######################################
+
+def test_functions(functions, test_cases):
+    for func in functions:
+        print(f"Testing function: {func.__name__}")
+        for i, test in enumerate(test_cases):
+            input_matrix, b = test["input"]
+            expected_output = test["output"]
+            result = func(input_matrix, b)
+            assert result == expected_output, f"Test {i+1} failed for {func.__name__}: expected {expected_output}, got {result}"
+    print("All tests passed successfully!")
+
+# Lista di funzioni da testare
+functions_to_test = [f, f__cp, f__cf, f__cp__cf, f__b, f__cp__b, f__cf__b, f__cp__cf__b]
+
+# Lista di test cases
+common_test_cases = [
+    {"input": ([[1, 2], [3, 4]], 2), "output": [[1, 1], [1, 1]]}, 
+    {"input": ([[5, 6], [7, 8]], 3), "output": [[5, 5], [5, 5]]},
+    {"input": ([[1, 2, 3], [4, 5, 6]], 2), "output": [[1, 1], [1, 1]]},
+    {"input": ([[1]], 3), "output": [[1]]},
+    {"input": ([[10, 20], [30, 40]], 1), "output": [[10, 20], [30, 40]]},
+]
+
+test_functions(functions_to_test, common_test_cases)
